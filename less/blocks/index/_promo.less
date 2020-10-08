@@ -1,0 +1,74 @@
+.promo{
+    background:#FFF1B8 url(../img/promo/svetik-removebg-preview.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    background-size: cover;
+    position: relative;
+    
+    &:after{
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(226, 249, 255, 39%);
+        z-index: 1;
+    }
+    
+    @media (min-width: 480px) {
+        background-size: contain;
+        &:after{
+            background: none;
+        }
+    }
+}
+
+.promo-desrc{
+    max-width: 100%;
+    font-family: Roboto;
+    font-style: normal;
+    color: #302C34;
+    position: relative;
+    padding: 20px 30px;
+    z-index: 2;
+    
+    @media (min-width: 480px) {
+        max-width: 400px;
+    }
+    
+    @media(min-width:678px){
+        padding: 20px;
+        max-width: 450px;
+    }   
+
+    @media(min-width:920px){
+        padding: 65px 0 65px 70px;
+        max-width: 50%;
+    }
+}
+
+.promo-desrc__heading{
+    max-width: 404px;
+    font-weight: bold;
+    line-height: 1.2;
+    font-size: 20px;
+
+    @media(min-width:678px){
+        font-size: 39px;
+    }   
+}
+
+.promo-descr__text{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 1.2;
+    margin-top: 20px;
+    font-size: 19px;
+
+    @media(min-width:678px){
+        font-size: 24px;
+
+    }   
+}

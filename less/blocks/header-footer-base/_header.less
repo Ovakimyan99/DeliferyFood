@@ -1,0 +1,111 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    align-items: center;
+    justify-content: center;
+
+    @media ( min-width: 678px ) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 45px 0;
+    }
+}
+
+.header > a {
+    min-width: 100px;
+}
+
+.search-input{
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 2px;
+    height: 40px;
+    font-size: 16px;
+    line-height: 1.2;
+    background-image: url(../img/header/home.svg);
+    background-repeat: no-repeat;
+    background-position: left 11px center;
+    width: 100%;
+    max-width: 85%;
+    margin: 20px;
+    padding: 11px 20px 11px 35px;
+    
+    @media(min-width:678px){
+        max-width: 690px;
+        padding: 11px 35px;
+        margin: 0 20px;
+    }    
+}
+
+.header__buttons{
+    display: flex;
+    width: 85%;
+    justify-content: space-between;
+
+
+    @media(min-width:678px){
+        width: auto;
+        justify-content: center;
+    }   
+}
+
+.header-button{
+    display: flex;
+    align-items: center;
+    float: right;
+    padding: 8px 16px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.089);
+    border-radius: 2px;
+    line-height: 1.5;
+    color: #595959;
+    cursor: pointer;
+    min-width: 115px;
+    transition: 0.3s ease-out;
+
+    &:hover{
+        box-shadow: 0 0px 9px 2px #beacac1f;
+        background: #beacac1f;
+        border-color: #beacac3b;
+    }
+}
+
+.header-button:first-child{
+    margin-right: 10px;
+}
+
+.header-button-primary{
+    background: #1890ff;
+    border: 1px solid #1890ff;
+    color: #fff;
+    float: left;
+    min-width: 96px;
+
+    &:hover{
+        box-shadow: 0 0px 9px -1px #2990ef;
+        background: #2990ef;
+    }
+
+    &:focus{
+        outline: 0;
+        border: 2px solid #2a78c2;
+    }
+}
+
+.header-button-text{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.header-button-icon{
+    margin-right: 6px;
+}
+
+.header-shopping-card{
+margin-right: 4px;
+}

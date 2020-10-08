@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container{
+    max-width: 1220px;
+    padding: 0 10px;
+    margin: auto;
+    width: 100%;
+}
+
+.container::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, rgba(245, 245, 245, 0) 1.04%, #F5F5F5 100%);
+    height: 100%;
+    z-index: -1;
+    bottom: 252px;
+
+    
+    @media (min-width: 500px) {
+        bottom: 145px;
+    }
+    
+    @media (min-width:768px){
+        bottom: 160px;
+    }
+
+}
+
+.none{
+    display: none !important;
+}

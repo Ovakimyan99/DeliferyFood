@@ -42,7 +42,8 @@ img {
 }
 
 .none{
-    display: none !important;
+    z-index: -20 !important;
+    opacity: 0 !important;
 }
 
 
@@ -58,8 +59,8 @@ img {
     width: 100%;
     background: rgba(0, 0, 0, 0.4);
     overflow: hidden;
-    // z-index: -20;
-    // opacity: 0;
+    z-index: 100;
+    opacity: 1;
 }
 
 .modal{
@@ -294,6 +295,8 @@ img {
 
 .modal__orders-default{
     display: none;
+    font-size: 21px;
+    line-height: 1.5;
 }
 
 // // modal

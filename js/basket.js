@@ -19,6 +19,9 @@ function closeModal(){
 }
 
 
+let cardWrapper = document.querySelector('.modal__orders');
+let cardButtons = document.querySelectorAll('[data-productBuy]');
+
 modalWrapper.addEventListener('click', function(e) {
 
     // production counter
@@ -49,23 +52,6 @@ modalWrapper.addEventListener('click', function(e) {
 
 toggleEmptyListItem();
 
-/*
-Создадим объект, в который будут записываться данные карточки, которую мы хотить записать в корзину
-при клике на кнопку "в корзину" будем пушить объект, в котором вся эта инфа и подгружать заново 
-в корзину этот объект
-    
-    проверка наличия все так же по id, просто id брать из коллекции объектов
-    
-    в конце конвертируем этот объект в строку, чтобы ее сохранять в локальное хранилище.
-    при вызове конветируем обратно и передаем в корзину
-*/
-
-const basketObj = [
-];
-
-let cardWrapper = document.querySelector('.modal__orders');
-let cardButtons = document.querySelectorAll('[data-productBuy]');
-
 cardButtons.forEach(function(items, i, cardButtons){
     items.addEventListener('click', function(){
         
@@ -79,65 +65,39 @@ cardButtons.forEach(function(items, i, cardButtons){
             id: card.getAttribute('data-id')
         };
 
-        
-        basketObj.push(cardItem);
-        
-        // if ( cardWrapper.querySelector(`[data-id="${cardItem.id}"]`) {
-            
-        // }
+        let itemInCart = cardWrapper.querySelector(`[data-id="${cardItem.id}"]`);
 
+        // Проверить, есть ли уже такой товар в корзине
+        if ( itemInCart ) {
+
+            itemInCart.querySelector('[data-modalCounter]').textContent =
+            parseInt(itemInCart.querySelector('[data-modalCounter]').textContent) + 1;
+            toggleEmptyListItem();
+
+        } else {
+
+        let cardItemHtml = `
+                <div class="modal__orders-item" data-id='${cardItem.id}'>
+
+                    <span class="modal__item-name">${cardItem.title}</span>
+                    
+                    <div class="modal__item-counter">
+                        <button data-modalPlus>+</button>
+                        <span data-modalCounter>1</span>
+                        <button data-modalMinus>-</button>
+                    </div>
+
+                    <span class="modal__item-price">${cardItem.price}</span>
+
+                </div>
+             `;
+
+        cardWrapper.insertAdjacentHTML('beforeend', cardItemHtml);
+
+        toggleEmptyListItem();
+        }
     });
 });
-
-
-// let cardButtons = document.querySelectorAll('[data-productBuy]');
-
-// cardButtons.forEach(function(items, i, cardButtons){
-//     items.addEventListener('click', function(){
-        
-//         //находим карточку, по которой кликнули
-//         let card = this.closest('.restaurants__card');
-
-//         // найдем данные карточки
-//         const cardItem = {
-//             title: card.querySelector('.restaurants__card-name h3').innerText,
-//             price: card.querySelector('.restaurants__card-buy span').innerText,
-//             id: card.getAttribute('data-id')
-//         };
-
-//         let itemInCart = cardWrapper.querySelector(`[data-id="${cardItem.id}"]`);
-
-//         // Проверить, есть ли уже такой товар в корзине
-//         if ( itemInCart ) {
-
-//             itemInCart.querySelector('[data-modalCounter]').textContent =
-//             parseInt(itemInCart.querySelector('[data-modalCounter]').textContent) + 1;
-//             toggleEmptyListItem();
-
-//         } else {
-
-//         let cardItemHtml = `
-//                 <div class="modal__orders-item" data-id='${cardItem.id}'>
-
-//                     <span class="modal__item-name">${cardItem.title}</span>
-                    
-//                     <div class="modal__item-counter">
-//                         <button data-modalPlus>+</button>
-//                         <span data-modalCounter>1</span>
-//                         <button data-modalMinus>-</button>
-//                     </div>
-
-//                     <span class="modal__item-price">${cardItem.price}</span>
-
-//                 </div>
-//              `;
-
-//         cardWrapper.insertAdjacentHTML('beforeend', cardItemHtml);
-
-//         toggleEmptyListItem();
-//         }
-//     });
-// });
 
 
 // проверка наличия элементов в корзине

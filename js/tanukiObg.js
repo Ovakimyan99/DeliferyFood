@@ -20,7 +20,7 @@ const productItemObg = [
         imgSrc: '../img/restaurants/tanuki/okinawa-standard-3.png',
         imgTitle: 'тайтл картинки',
         title: 'Окинава стандарт',
-        descr: 'Рис, креветка отварная, сыр сливочный, лосось, огурец свежий...',
+        descr: 'Рис, креветка отварная, сыр сливочный, лосось, огурец свежий; Продолжение описание товара',
         price: '310',
         id: '03'
     },
@@ -28,7 +28,7 @@ const productItemObg = [
         imgSrc: '../img/restaurants/tanuki/caesar-poppy-xl-4.png',
         imgTitle: 'тайтл картинки',
         title: 'Цезарь маки хl',
-        descr: 'Рис, куриная грудка копченая, икра масаго, томат, айсберг, соус цезарь...',
+        descr: 'Рис, куриная грудка копченая, икра масаго, томат, айсберг, соус цезарь (70 символов) описание опписание цезаря маки хл',
         price: '320',
         id: '04'
     },
@@ -56,33 +56,65 @@ const productCellWrapper = document.querySelector('.restaurants__card-wrapper');
 // внедряем карточки в верстку
 productItemObg.forEach(function(item, i){
 
-    //шаблон карточки
-    productCellWrapper.insertAdjacentHTML('beforeend',`
-        <!-- card item ${productItemObg[i].title} -->
-        <div class="restaurants__card" data-id='${productItemObg[i].id}'>
+    /* Если длина описанного товара больше 70 символов, 
+    то создаем новый блок с текстом и при наведении высвечиваени его */
+    if (item.descr.length > 70) {
+        let newObj = JSON.parse(JSON.stringify(productItemObg));
 
-            <div class="restaurants__card-img">
-                <img src="${productItemObg[i].imgSrc}" alt="${productItemObg[i].title}" title='${productItemObg[i].imgTitle}'>
-            </div>
+        item.descr = item.descr.slice(0, 70) + '...';
 
-            <div class="restaurants__card-info">
+        callTemplate();
 
-                <div class="restaurants__card-name">
-                    <h3>${productItemObg[i].title}</h3>
-                    <p>${productItemObg[i].descr}</p>
-                </div>
 
-                <div class="restaurants__card-buy">
-                    <button  class="restaurants__card-btn" data-productBuy>
-                        В корзину <img src="../img/restaurants/shopping-cart.svg" alt="корзина">
-                    </button>
-                    <span>${productItemObg[i].price} ₽</span>
-                </div>
-
-            </div>
-
+        let restCard = document.querySelectorAll('.restaurants__card')[i];
+        restCard.insertAdjacentHTML('beforeend', `
+        <div class="restaurants__card--descr-hidden">
+            <h3>${item.title}</h3>
+            <p>${newObj[i].descr}</p>
+            <div class="restaurants__card-buy">
+            <button  class="restaurants__card-btn" data-productBuy>
+                В корзину <img src="../img/restaurants/shopping-cart.svg" alt="корзина">
+            </button>
+            <span>${item.price} ₽</span>
         </div>
-        <!-- // card item ${productItemObg[i].title} -->
-    `);
+        </div>
+        `);
+    } else {callTemplate();}
+
+
+    //шаблон внедряемой карточки
+    function callTemplate () {
+
+        productCellWrapper.insertAdjacentHTML('beforeend',`
+            <!-- card item ${item.title} -->
+            <div class="restaurants__card" data-id='${item.id}'>
+
+                <div class="restaurants__card-img">
+                    <img src="${item.imgSrc}" alt="${item.title}" title='${item.imgTitle}'>
+                </div>
+
+                <div class="restaurants__card-info">
+
+                    <div class="restaurants__card-name">
+                        <h3>${item.title}</h3>
+                        <p>${item.descr}</p>
+                    </div>
+
+                    <div class="restaurants__card-buy">
+                        <button  class="restaurants__card-btn" data-productBuy>
+                            В корзину <img src="../img/restaurants/shopping-cart.svg" alt="корзина">
+                        </button>
+                        <span>${item.price} ₽</span>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- // card item ${item.title} -->
+        `);
+
+    }
 
 });
+
+

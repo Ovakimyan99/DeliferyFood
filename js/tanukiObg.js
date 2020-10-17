@@ -12,7 +12,7 @@ const productItemObg = [
         imgSrc: '../img/restaurants/tanuki/california-salmon-standard-2.png',
         imgTitle: 'тайтл картинки',
         title: 'Калифорния лосось стандарт',
-        descr: 'Рис, лосось, авокадо, огурец, майонез, икра масаго, водоросли нори.',
+        descr: 'Рис, лосось, авокадо, огурец, майонез, икра масаго, водоросли нори0. раз раз раз',
         price: '300',
         id: '02'
     },

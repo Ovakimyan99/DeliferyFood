@@ -668,7 +668,7 @@ img {
 .restaurants__card--descr-hidden {
   position: absolute;
   bottom: -100%;
-  padding: 20px;
+  padding: 24px 24px 30px;
   background: #fff;
   text-align: left;
   height: auto;
@@ -681,7 +681,7 @@ img {
   color: #8C8C8C;
 }
 .restaurants__card--descr-hidden > p {
-  margin-bottom: 50px;
+  margin-bottom: 24px;
 }
 .restaurants__card--descr-hidden > h3 {
   margin-bottom: 10px;
